@@ -97,3 +97,5 @@ export const logout = (_: any, res: Response) => {
     }
   }
 };
+
+export const updateProfile = async (req: Request, res: Response) => {};
