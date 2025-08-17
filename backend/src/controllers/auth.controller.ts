@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import User from "../models/user.model.ts";
 import { generateToken } from "../lib/utils.ts";
 import bcrypt from "bcrypt";
+import cloudinary from "../lib/cloudinary.ts";
 
 export const signup = async (req: Request, res: Response) => {
   const {
@@ -98,4 +99,29 @@ export const logout = (_: any, res: Response) => {
   }
 };
 
-export const updateProfile = async (req: Request, res: Response) => {};
+export const updateProfile = async (req: Request, res: Response) => {
+  try {
+    const {
+      body: { profilePic },
+    } = req;
+    const userId = (req as any).user._id;
+
+    if (!profilePic) {
+      return res.status(400).json({ message: "Profile pic is required" });
+    }
+
+    const uploadResponse = await cloudinary.uploader.upload(profilePic);
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        profilePic: uploadResponse.secure_url,
+      },
+      { new: true },
+    );
+
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    console.log("error in update profile:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
