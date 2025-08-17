@@ -3,6 +3,7 @@ import {
   signup,
   logout,
   updateProfile,
+  checkAuth,
 } from "../controllers/auth.controller.ts";
 import type { Router } from "express";
 import express from "express";
@@ -15,5 +16,7 @@ router.post("/login", login);
 router.post("/logout", logout);
 
 router.put("/update-profile", protectRoute, updateProfile);
+
+router.get("/check", protectRoute, checkAuth);
 
 export default router;
