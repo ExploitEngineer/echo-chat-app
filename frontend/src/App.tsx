@@ -8,6 +8,7 @@ import ProfilePage from "./components/pages/profile-page.tsx";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore.ts";
 import { Loader } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const { isCheckingAuth, authUser, checkAuth } = useAuthStore();
@@ -48,6 +49,8 @@ export default function App() {
           element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
         />
       </Routes>
+
+      <Toaster />
     </div>
   );
 }
