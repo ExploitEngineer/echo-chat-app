@@ -31,9 +31,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
       set({ authUser: res.data });
     } catch (err) {
-      if (err instanceof Error) {
-        console.log("Error in checkAuth:", err.message);
-      }
+      console.log("Error in checkAuth:", err);
       set({ authUser: null });
     } finally {
       set({ isCheckingAuth: false });
