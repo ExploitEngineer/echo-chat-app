@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "concurrently \"pnpm run dev --prefix backend\" \"pnpm run dev --prefix frontend\"",
-        "build": "pnpm install --prefix backend && pnpm install --prefix frontend && pnpm run build --prefix frontend",
+        "build": "pnpm install --prefix frontend && pnpm run build --prefix frontend && pnpm install --prefix backend && pnpm run build --prefix backend",
         "start": "pnpm run start --prefix backend"
     },
     "keywords": [],
