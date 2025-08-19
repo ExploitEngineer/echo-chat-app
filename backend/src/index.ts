@@ -8,11 +8,8 @@ import messageRoutes from "./routes/message.route";
 import cookieParser from "cookie-parser";
 import type { CorsOptions } from "cors";
 import { app, server } from "./lib/socket";
-import path from "path";
 
 dotenv.config();
-
-const __dirname = path.resolve();
 
 const corsOptions: CorsOptions = {
   origin: "http://localhost:5173",
@@ -26,15 +23,7 @@ app.use(cors(corsOptions));
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-  app.get("*", (_, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
-}
-
-app.get("/", (_, res: Response) => {
+app.get("/", (_: any, res: Response) => {
   res.json({ message: "api" });
 });
 
