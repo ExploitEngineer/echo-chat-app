@@ -1,5 +1,6 @@
 import http from "http";
-import express, { Application } from "express";
+import express from "express";
+import type { Application } from "express";
 import { Server, Socket } from "socket.io";
 import type { Server as HTTPServer } from "http";
 import type { Server as SocketIOServer } from "socket.io";
