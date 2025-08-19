@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 
 interface AuthUser {
-  fullName: string;
+  fullName?: string;
   email: string;
   password: string;
 }
@@ -16,6 +16,8 @@ interface AuthState {
   isUpdatingProfile: boolean;
   checkAuth: () => Promise<void>;
   signup: (data: AuthUser) => Promise<void>;
+  login: (data: AuthUser) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -51,6 +53,21 @@ export const useAuthStore = create<AuthState>((set) => ({
       }
     } finally {
       set({ isSigningUp: false });
+    }
+  },
+
+  login: async (data: AuthUser) => {
+    set({ isLoggingIn: true });
+    try {
+      const res = await axiosInstance.post("/auth/login", data);
+      set({ authUser: res.data });
+      toast.success("Logged in successfully");
+    } catch (err) {
+      if (err instanceof Error) {
+        toast.error(err.message);
+      }
+    } finally {
+      set({ isLoggingIn: false });
     }
   },
 
