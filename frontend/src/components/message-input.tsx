@@ -3,7 +3,7 @@ import { useChatStore } from "@/store/useChatStore";
 import { Image, Send, X } from "lucide-react";
 import toast from "react-hot-toast";
 
-const MessageInput = () => {
+export default function MessageInput() {
   const [text, setText] = useState<string>("");
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -106,5 +106,4 @@ const MessageInput = () => {
       </form>
     </div>
   );
-};
-export default MessageInput;
+}
