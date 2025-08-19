@@ -126,7 +126,7 @@ export const updateProfile = async (req: Request, res: Response) => {
   }
 };
 
-export const checkAuth = (res: Response, req: Request) => {
+export const checkAuth = (req: Request, res: Response) => {
   try {
     const user = (req as any).user;
     res.status(200).json(user);
