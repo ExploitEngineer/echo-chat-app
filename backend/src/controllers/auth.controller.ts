@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import User from "../models/user.model";
-import { generateToken } from "../lib/utils";
+import User from "../models/user.model.ts";
+import { generateToken } from "../lib/utils.ts";
 import bcrypt from "bcrypt";
-import cloudinary from "../lib/cloudinary";
+import cloudinary from "../lib/cloudinary.ts";
 
 export const signup = async (req: Request, res: Response) => {
   const {

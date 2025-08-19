@@ -4,10 +4,10 @@ import {
   logout,
   updateProfile,
   checkAuth,
-} from "../controllers/auth.controller";
+} from "../controllers/auth.controller.ts";
 import type { Router } from "express";
 import express from "express";
-import { protectRoute } from "../middleware/auth.middleware";
+import { protectRoute } from "../middleware/auth.middleware.ts";
 
 const router: Router = express.Router();
 

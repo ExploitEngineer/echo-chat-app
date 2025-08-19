@@ -2,12 +2,12 @@ import cors from "cors";
 import express from "express";
 import type { Response } from "express";
 import dotenv from "dotenv";
-import { connectDB } from "./lib/db";
-import authRoutes from "./routes/auth.route";
-import messageRoutes from "./routes/message.route";
+import { connectDB } from "./lib/db.ts";
+import authRoutes from "./routes/auth.route.ts";
+import messageRoutes from "./routes/message.route.ts";
 import cookieParser from "cookie-parser";
 import type { CorsOptions } from "cors";
-import { app, server } from "./lib/socket";
+import { app, server } from "./lib/socket.ts";
 
 dotenv.config();
 
