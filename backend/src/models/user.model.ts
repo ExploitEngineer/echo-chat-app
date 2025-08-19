@@ -1,6 +1,6 @@
 import { model } from "mongoose";
 import type { InferSchemaType } from "mongoose";
-import { userSchema } from "../schemas/user.schema.ts";
+import { userSchema } from "../schemas/user.schema";
 
 type UserType = InferSchemaType<typeof userSchema>;
 

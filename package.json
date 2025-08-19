@@ -1,0 +1,18 @@
+{
+    "name": "chat-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "concurrently \"pnpm run dev --prefix backend\" \"pnpm run dev --prefix frontend\"",
+        "build": "pnpm install --prefix backend && pnpm install --prefix frontend && pnpm run build --prefix frontend",
+        "start": "pnpm run start --prefix backend"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.14.0",
+    "devDependencies": {
+        "concurrently": "^9.0.0"
+    }
+}

@@ -1,11 +1,11 @@
 import express from "express";
 import type { Router } from "express";
-import { protectRoute } from "../middleware/auth.middleware.ts";
+import { protectRoute } from "../middleware/auth.middleware";
 import {
   getUsersForSidebar,
   getMessages,
   sendMessage,
-} from "../controllers/message.controller.ts";
+} from "../controllers/message.controller";
 
 const router: Router = express.Router();
 
