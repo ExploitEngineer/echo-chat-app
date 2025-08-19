@@ -7,10 +7,9 @@ import authRoutes from "./routes/auth.route.ts";
 import messageRoutes from "./routes/message.route.ts";
 import cookieParser from "cookie-parser";
 import type { CorsOptions } from "cors";
+import { app, server } from "./lib/socket.ts";
 
 dotenv.config();
-
-const app = express();
 
 const corsOptions: CorsOptions = {
   origin: "http://localhost:5173",
@@ -22,7 +21,7 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/message", messageRoutes);
+app.use("/api/messages", messageRoutes);
 
 app.get("/", (_, res: Response) => {
   res.json({ message: "api" });
@@ -30,7 +29,7 @@ app.get("/", (_, res: Response) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
   connectDB();
 });
